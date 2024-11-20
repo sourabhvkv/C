@@ -1,0 +1,36 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Compile and run",
+      "type": "shell",
+      "command": "cmd",
+      "args": [
+        "/c",
+        "copy \"${file}\" \"${workspaceFolder}\\temp.c\" && gcc \"${workspaceFolder}\\temp.c\" -o \"${workspaceFolder}\\temp\" && \"${workspaceFolder}\\temp\" < \"${workspaceFolder}\\input.txt\" > \"${workspaceFolder}\\output.txt\" && del \"${workspaceFolder}\\temp.exe\" && del \"${workspaceFolder}\\temp.c\""
+      ],
+      "presentation": {
+        "reveal": "always"
+      },
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      },
+      "problemMatcher": {
+        "owner": "c",
+        "fileLocation": [
+          "relative",
+          "${workspaceRoot}"
+        ],
+        "pattern": {
+          "regexp": "^(.*):(\\d+):(\\d+):\\s+(warning|error):\\s+(.*)$",
+          "file": 1,
+          "line": 2,
+          "column": 3,
+          "severity": 4,
+          "message": 5
+        }
+      }
+    }
+  ]
+}
